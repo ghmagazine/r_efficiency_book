@@ -224,7 +224,7 @@ library(ggplot2)
 for(nm in names(iris)[-5]) {
   print(
     ggplot(iris) +
-      aes(nm) +
+      aes(.data[[nm]]) +
       geom_histogram()
   )
 }
