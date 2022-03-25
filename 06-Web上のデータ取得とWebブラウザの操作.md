@@ -469,11 +469,13 @@ library(stringr)
 get_html <- function(url) {
   book_list <- try(read_html(url))
 
-  if (class(book_list) == "try-error") {
+  if (inherits(book_list, "try-error")) {
     error <- paste("an error occured, ", url, sep = "")
     print(error)
 
     return(minimal_html("<p>error</p>"))
+  } else {
+    return(book_list)
   }
 }
 
